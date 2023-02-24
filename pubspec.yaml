@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   camera: ^0.10.3+1
   lottie: ^2.2.0
+  firebase_core: ^2.7.0
+  firebase_auth: ^4.2.9
 
 dev_dependencies:
   flutter_test:
@@ -61,9 +63,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/lottie/My project-1 (2).mp4.lottie (2).json
+    - assets/lottie/My project-1 (1).png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

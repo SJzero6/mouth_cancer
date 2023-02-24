@@ -18,7 +18,7 @@ class _SplashState extends State<Splash> {
   }
 
   _navigatetohome() {
-    Future.delayed(const Duration(milliseconds: 2000), () {
+    Future.delayed(const Duration(milliseconds: 6000), () {
       Navigator.push(
           context, MaterialPageRoute(builder: ((context) => Login())));
     });
@@ -27,9 +27,10 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
-        child: Lottie.asset(
-            'assets/lottie/36295-breast-cancer-awareness-month.json'),
+        child:
+            Lottie.asset('assets/lottie/My project-1 (2).mp4.lottie (2).json'),
       ),
     );
   }
