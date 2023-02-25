@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mouth_cancer/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:mouth_cancer/camera.dart';
@@ -14,7 +15,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Home Page")),
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        title: const Text(
+          "ORALA",
+        ),
+      ),
       body: SafeArea(
         child: Center(
             child: IconButton(
