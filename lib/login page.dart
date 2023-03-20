@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:mouth_cancer/camera.dart';
 import 'package:mouth_cancer/homepage.dart';
 import 'package:mouth_cancer/register.dart';
 import 'package:firebase_auth/firebase_auth.dart';

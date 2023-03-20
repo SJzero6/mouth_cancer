@@ -1,11 +1,15 @@
+import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mouth_cancer/camera.dart';
 import 'package:mouth_cancer/homepage.dart';
 import 'package:mouth_cancer/login%20page.dart';
 import 'package:mouth_cancer/splash.dart';
 
+late List<CameraDescription> cameras;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
