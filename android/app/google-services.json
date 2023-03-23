@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "114173272965",
+    "project_id": "mouth-cancer",
+    "storage_bucket": "mouth-cancer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114173272965:android:38b06873e53c2ceece1aec",
+        "android_client_info": {
+          "package_name": "com.example.mouth_cancer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114173272965-3jlh57ddph2msvtpmv4tfpqljj9c5ocm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9pV8TskX6tExDO3Sm0I-LqRLQAq8KLNM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "114173272965-3jlh57ddph2msvtpmv4tfpqljj9c5ocm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
