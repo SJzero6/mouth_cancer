@@ -46,61 +46,99 @@ class _CameraPageState extends State<CameraPage> {
   Widget build(BuildContext context) {
     // Size size = Size.fromWidth(MediaQuery.of(context).size.width);
     return Scaffold(
-        body: SafeArea(
-            child: Stack(
-      children: [
-        Container(
-          height: double.infinity,
-          child: CameraPreview(_controller),
-        ),
-        Center(
-          child: CustomPaint(
-            painter: Rectangle(),
-          ),
-        ),
-        Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-                height: MediaQuery.of(context).size.height * 0.20,
-                decoration: const BoxDecoration(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(24)),
-                    color: Colors.black),
-                child: Center(
-                  child: IconButton(
-                    onPressed: () async {
-                      print('work');
-                      if (!_controller.value.isInitialized) {
-                        print('hello');
-                        return;
-                      }
-                      // if (!_controller.value.isTakingPicture) {
-                      //   print('hii');
-                      //   return;
-                      // }
+        backgroundColor: Colors.black,
+        body: SafeArea(child: Center(
+          child: LayoutBuilder(builder: (context, constraints) {
+            double canvasWidth = constraints.maxWidth;
+            double canvasHeight = constraints.maxHeight;
+            print("constraints" +
+                constraints.maxWidth.toString() +
+                " " +
+                constraints.maxHeight.toString());
 
-                      try {
-                        print("kope");
-                        await _controller.setFlashMode(FlashMode.auto);
-                        XFile file = await _controller.takePicture();
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PreviewPage(file: file),
-                            ));
-                      } on CameraException catch (e) {
-                        debugPrint('error ocured while taking picture : $e');
-                        return null;
-                      }
-                    },
-                    iconSize: 80,
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
-                    icon: const Icon(Icons.circle, color: Colors.white),
-                  ),
-                )))
-      ],
-    )));
+            return Container(
+              height: ((canvasHeight / 10).floorToDouble()) * 10,
+              width: ((canvasWidth / 10).floorToDouble()) * 10,
+              child: LayoutBuilder(builder: (context, sss) {
+                print(sss);
+                return Stack(
+                  alignment: Alignment.topLeft,
+                  children: [
+                    LayoutBuilder(builder: (context, ssss) {
+                      print(ssss);
+                      return Container(
+                        height: double.infinity,
+                        child: CameraPreview(_controller),
+                      );
+                    }),
+                    Center(
+                      child: CustomPaint(
+                        painter: Rectangle(),
+                      ),
+                    ),
+                    Container(
+                      // width: 200,
+                      // height: 320,
+                      //decoration: BoxDecoration(border: Border.all(width: 1)),
+                      child: CustomPaint(
+                        painter: OpenPainter(canvasWidth, canvasHeight),
+                      ),
+                    ),
+                    Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                            height: MediaQuery.of(context).size.height * 0.20,
+                            decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(24)),
+                                color: Colors.black),
+                            child: Center(
+                              child: IconButton(
+                                onPressed: () async {
+                                  print('work');
+                                  if (!_controller.value.isInitialized) {
+                                    print('controller not initialized');
+                                    return;
+                                  }
+                                  // if (!_controller.value.isTakingPicture) {
+                                  //   print('hii');
+                                  //   return;
+                                  // }
+
+                                  try {
+                                    print("try takepicture");
+                                    await _controller
+                                        .setFlashMode(FlashMode.off);
+                                    XFile file =
+                                        await _controller.takePicture();
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => PreviewPage(
+                                            file: file,
+                                            photoCanvasWidth: canvasWidth,
+                                            photoCanvasHeight: canvasHeight,
+                                          ),
+                                        ));
+                                  } on CameraException catch (e) {
+                                    debugPrint(
+                                        'error ocured while taking picture : $e');
+                                    return null;
+                                  }
+                                },
+                                iconSize: 80,
+                                padding: EdgeInsets.zero,
+                                constraints: const BoxConstraints(),
+                                icon: const Icon(Icons.circle,
+                                    color: Colors.white),
+                              ),
+                            )))
+                  ],
+                );
+              }),
+            );
+          }),
+        )));
   }
 }
 
@@ -129,4 +167,102 @@ class Rectangle extends CustomPainter {
   bool shouldRepaint(covariant Rectangle oldDelegate) {
     return false;
   }
+}
+
+class OpenPainter extends CustomPainter {
+  double canvasWidth;
+  double canvasHeight;
+
+  OpenPainter(this.canvasWidth, this.canvasHeight);
+  @override
+  void paint(Canvas canvas, Size size) {
+    double xOffset = canvasWidth / 2 - 100;
+    double yOffset = canvasHeight / 2 - 160;
+    var paint1 = Paint()
+      ..color = Color(0xFFF50707)
+      ..strokeWidth = 10;
+
+    var pointPaintRed = Paint()
+      ..color = Color(0xFFF50707)
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 10;
+
+    var pointPaintGreen = Paint()
+      ..color = Color.fromARGB(255, 94, 245, 7)
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 10;
+
+    var pointPaintBlue = Paint()
+      ..color = Color.fromARGB(255, 7, 102, 245)
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 10;
+
+    var pointPaintOrange = Paint()
+      ..color = Color.fromARGB(255, 245, 142, 7)
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 10;
+
+    var tPathpaint = Paint()
+      ..color = Color.fromARGB(255, 9, 86, 230)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2;
+    //list of points
+    var points = [
+      Offset(xOffset + 0, yOffset + 0),
+      Offset(xOffset + 200, yOffset + 0),
+      Offset(xOffset + 0, yOffset + 220),
+      Offset(xOffset + 100, yOffset + 320),
+      Offset(xOffset + 200, yOffset + 220),
+    ];
+    //draw points on canvas
+    canvas.drawPoints(ui.PointMode.points, points, paint1);
+
+    var L1RedPoints = [
+      Offset(xOffset + 10, yOffset + 180),
+      Offset(xOffset + 190, yOffset + 180),
+    ];
+
+    canvas.drawPoints(ui.PointMode.points, L1RedPoints, pointPaintRed);
+
+    var L2GreenPoints = [
+      Offset(xOffset + 80, yOffset + 20),
+      Offset(xOffset + 120, yOffset + 20),
+    ];
+
+    canvas.drawPoints(ui.PointMode.points, L2GreenPoints, pointPaintGreen);
+
+    var L3BluePoints = [
+      Offset(xOffset + 75, yOffset + 190),
+      Offset(xOffset + 125, yOffset + 190),
+    ];
+
+    canvas.drawPoints(ui.PointMode.points, L3BluePoints, pointPaintBlue);
+
+    var L4OrangePoints = [
+      Offset(xOffset + 95, yOffset + 300),
+      Offset(xOffset + 105, yOffset + 300),
+    ];
+
+    canvas.drawPoints(ui.PointMode.points, L4OrangePoints, pointPaintOrange);
+
+    var tPath = Path()
+      ..moveTo(xOffset + 0, yOffset + 0)
+      ..lineTo(xOffset + 0, yOffset + 220)
+      ..lineTo(xOffset + 100, yOffset + 320)
+      ..lineTo(xOffset + 200, yOffset + 220)
+      ..lineTo(xOffset + 200, yOffset + 0)
+      ..close();
+
+    canvas.drawPath(tPath, tPathpaint);
+    tPath = Path()
+      ..moveTo(0, 0)
+      ..lineTo(0, 220)
+      ..lineTo(100, 320)
+      ..lineTo(180, 220)
+      ..lineTo(200, 0)
+      ..close();
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
