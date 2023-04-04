@@ -218,29 +218,29 @@ class OpenPainter extends CustomPainter {
     canvas.drawPoints(ui.PointMode.points, points, paint1);
 
     var L1RedPoints = [
-      Offset(xOffset + 10, yOffset + 180),
-      Offset(xOffset + 190, yOffset + 180),
+      Offset(xOffset + 30, yOffset + 190),
+      Offset(xOffset + 170, yOffset + 190),
     ];
 
     canvas.drawPoints(ui.PointMode.points, L1RedPoints, pointPaintRed);
 
     var L2GreenPoints = [
-      Offset(xOffset + 80, yOffset + 20),
-      Offset(xOffset + 120, yOffset + 20),
+      Offset(xOffset + 70, yOffset + 30),
+      Offset(xOffset + 130, yOffset + 30),
     ];
 
     canvas.drawPoints(ui.PointMode.points, L2GreenPoints, pointPaintGreen);
 
     var L3BluePoints = [
-      Offset(xOffset + 75, yOffset + 190),
-      Offset(xOffset + 125, yOffset + 190),
+      Offset(xOffset + 75, yOffset + 185),
+      Offset(xOffset + 125, yOffset + 185),
     ];
 
     canvas.drawPoints(ui.PointMode.points, L3BluePoints, pointPaintBlue);
 
     var L4OrangePoints = [
-      Offset(xOffset + 95, yOffset + 300),
-      Offset(xOffset + 105, yOffset + 300),
+      Offset(xOffset + 90, yOffset + 280),
+      Offset(xOffset + 110, yOffset + 280),
     ];
 
     canvas.drawPoints(ui.PointMode.points, L4OrangePoints, pointPaintOrange);

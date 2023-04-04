@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mouth_cancer/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:mouth_cancer/camera.dart';
-import 'package:mouth_cancer/image_color_picker.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({
@@ -27,6 +26,7 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: Center(
             child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
               iconSize: 50,
@@ -38,10 +38,10 @@ class _HomePageState extends State<HomePage> {
                 Icons.camera,
               ),
             ),
-            ElevatedButton(
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => ColorPickerWidget())),
-                child: Text("Color picker"))
+            Text(
+              "Take Image",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+            ),
           ],
         )),
       ),

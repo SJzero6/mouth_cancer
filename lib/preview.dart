@@ -52,10 +52,10 @@ class _PreviewPageState extends State<PreviewPage> {
       double xOffset = widget.photoCanvasWidth / 2 - 100;
       double yOffset = widget.photoCanvasHeight / 2 - 160;
       var refPoints = [
-        [xOffset + 10, yOffset + 180],
-        [xOffset + 80, yOffset + 20],
-        [xOffset + 75, yOffset + 190],
-        [xOffset + 95, yOffset + 300]
+        [xOffset + 30, yOffset + 190],
+        [xOffset + 70, yOffset + 30],
+        [xOffset + 75, yOffset + 185],
+        [xOffset + 90, yOffset + 280]
       ];
 
       print("max widths $maxWidth , $maxHeight");
